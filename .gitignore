@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.venv/
+.vscode/
+
+# Instructor-only reference; remove before publishing a student template.
+facit/
