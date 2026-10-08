@@ -14,7 +14,7 @@ syntaktiskt korrekt ≠ logiskt korrekt ≠ skyddat av programmets regler
 
 En enkel arbetsmodell är **operation → kontrollera regler → tillåten? → ändra state eller ändra inget**. Vi använder bara variables, `if`/`else`, methods och andra delar du redan kan. Inga paket, filer, `input()` eller exception handling behövs. Vi utgår från att `amount` är ett vanligt `int`; text som indata ingår inte. Detta är **manuell kontroll**, inte en labb om automatiserade test.
 
-Räkna med ungefär 1–2 timmar i egen takt. En fungerande kontrollpunkt är ett bra ställe att pausa; du behöver också tid för annan repetition. Gör gärna en liten `commit` efter varje steg som fungerar.
+Räkna med ungefär 1–2 timmar i egen takt. En fungerande kontrollpunkt är ett bra ställe att pausa. Gör gärna en liten `commit` efter varje steg som fungerar.
 
 ## Utgångsläge: kör innan du ändrar
 
