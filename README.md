@@ -86,7 +86,7 @@ Fundera:
 
 Ändra ingen kod ännu.
 
-**Klar när:** Du kan förklara minst två problem och har skrivit dem kort i `REFLECTION.md`.
+**Klar när:** Du kan förklara minst två problem med startprogrammet.
 
 ## Steg 2 – `start()`
 
