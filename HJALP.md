@@ -20,13 +20,15 @@
 
 **Mer hjälp:** Använd samma ordning som i steg 2: kontroll först, eventuell tidig `return False`, sedan den redan fungerande ändringen och `return True`. Ett nytt Car-object börjar med `False` i `is_running`.
 
-## Steg 4A – `accelerate()` kräver att bilen är startad
+## Steg 4 – `accelerate()`
+
+### 4A – bilen måste vara startad
 
 **Första ledtråd:** Innan speed ökar, vad måste vara sant om fordonet?
 
 **Mer hjälp:** `self.is_running` beskriver tillståndet. För ett stoppat object ska methoden nå `return False` **före** `self.speed += amount`. Prova både före och efter `start()` på samma object.
 
-## Steg 4B – `accelerate(amount)` kräver positivt värde
+### 4B – `accelerate(amount)` kräver positivt värde
 
 **Första ledtråd:** Är `-5` eller `0` en rimlig ökning av speed?
 
