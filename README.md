@@ -99,6 +99,17 @@ första start() → True
 andra start() → False
 ```
 
+Kontrollera med ett nytt `Car`-objekt:
+
+```python
+car = Car("Volvo", "V60")
+
+print(car.start())  # True
+print(car.start())  # False
+```
+
+Första starten lyckas och den andra nekas. Vid det nekade försöket ska state inte ändras.
+
 **Commit:** `Validate start`
 
 ## Steg 3 – `stop()`
@@ -106,6 +117,21 @@ andra start() → False
 **Gör:** Om bilen redan är stoppad ska `stop()` returnera `False`.
 
 **Klar när:** Du kan visa att ett extra stopp nekas (och att `start()` följt av `stop()` fortfarande ger `True`).
+
+Kontrollera båda fallen separat:
+
+```python
+car = Car("Volvo", "V60")
+
+print(car.stop())  # False
+```
+
+```python
+car = Car("Volvo", "V60")
+
+car.start()
+print(car.stop())  # True
+```
 
 **Commit:** `Validate stop`
 
@@ -117,11 +143,31 @@ andra start() → False
 
 **Klar när:** Acceleration före `start()` ger `False`; efter `start()` ger den `True`.
 
+Kontrollera att en stoppad bil inte ändrar speed:
+
+```python
+car = Car("Volvo", "V60")
+
+print(car.accelerate(10))  # False
+print(car.speed)           # 0
+```
+
 ### 4B – amount måste vara större än 0
 
 **Gör:** Om `amount` är 0 eller negativt ska `accelerate()` returnera `False` och speed ska inte ändras.
 
 **Klar när:** `accelerate(-5)` och `accelerate(0)` ger `False`, medan `accelerate(10)` ger `True` och speed `10`.
+
+Kontrollera negativa och nollvärden separat från startregeln:
+
+```python
+car = Car("Volvo", "V60")
+car.start()
+
+print(car.accelerate(-5))  # False
+print(car.accelerate(0))   # False
+print(car.speed)           # 0
+```
 
 **Commit:** `Validate accelerate`
 
@@ -139,6 +185,35 @@ Nekade fall returnerar `False` utan ändring. Tillåtna fall returnerar `True`.
 
 **Klar när:** Från speed `20` ger `brake(-5)` `False` (speed `20`), `brake(5)` ger `True` (speed `15`), `brake(50)` ger `True` (speed `0`) och ett nytt `brake(10)` ger `False`.
 
+Kontrollera att en stoppad bil inte kan bromsa:
+
+```python
+car = Car("Volvo", "V60")
+
+print(car.brake(5))  # False
+print(car.speed)     # 0
+```
+
+Kontrollera att för stor bromsning inte ger negativ speed:
+
+```python
+car = Car("Volvo", "V60")
+car.speed = 50
+
+print(car.brake(100))  # True
+print(car.speed)       # 0
+```
+
+Kontrollera att negativ bromsning nekas utan att ändra speed:
+
+```python
+car = Car("Volvo", "V60")
+car.speed = 50
+
+print(car.brake(-5))  # False
+print(car.speed)      # 50
+```
+
 **Commit:** `Validate brake`
 
 ## Steg 6 – `refuel()`
@@ -153,6 +228,24 @@ fuel får inte gå över max_fuel
 Ingen delvis tankning: om hela mängden inte får plats, returnera `False` och ändra inget.
 
 **Klar när:** Från fuel `20` ger `refuel(-10)` och `refuel(30)` `False` (fuel `20`), medan `refuel(10)` ger `True` (fuel `30`).
+
+Kontrollera att negativ mängd nekas:
+
+```python
+car = Car("Volvo", "V60")
+
+print(car.refuel(-5))  # False
+print(car.fuel)        # 20
+```
+
+En ny bil börjar med fuel `20` och `max_fuel` `40`. Kontrollera att en mängd som skulle överskrida gränsen nekas:
+
+```python
+car = Car("Volvo", "V60")
+
+print(car.refuel(21))  # False
+print(car.fuel)        # 20
+```
 
 **Commit:** `Validate refuel`
 

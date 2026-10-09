@@ -4,9 +4,9 @@
 
 ## Steg 1 – undersök programmet
 
-**Första ledtråd:** Följ värdena i den ordning `main.py` anropar methods. Vad är speed precis före `brake(100)`?
+**Första ledtråd:** Varje test i `main.py` skapar ett eget `Car`-objekt. I bromstestet, vilket värde får speed precis före `brake(100)`?
 
-**Mer hjälp:** Startvärdet är `0`. Starter-koden lägger till `50` trots att bilen är stoppad och drar sedan bort `100`. Jämför detta med sista utskriften. Det finns inget syntaxfel att laga.
+**Mer hjälp:** Bromstestet sätter `brake_car.speed = 50` direkt. Det är ett separat objekt från accelerationstestet, som börjar med speed `0`. Starter-koden drar sedan bort `100`, så speed blir negativ. Det finns inget syntaxfel att laga.
 
 ## Steg 2 – `start()`
 
@@ -18,7 +18,7 @@
 
 **Första ledtråd:** Vilket värde på samma attribute betyder ”redan stoppad”?
 
-**Mer hjälp:** Använd samma ordning som i steg 2: kontroll först, eventuell tidig `return False`, sedan den redan fungerande ändringen och `return True`. Ett nytt Car-object börjar med `False` i `is_running`.
+**Mer hjälp:** Använd samma ordning som i steg 2: kontroll först, eventuell tidig `return False`, sedan den redan fungerande ändringen och `return True`. Ett nytt `Car`-objekt börjar med `False` i `is_running`. Varje test i `main.py` använder ett eget objekt.
 
 ## Steg 4 – `accelerate()`
 
@@ -26,7 +26,7 @@
 
 **Första ledtråd:** Innan speed ökar, vad måste vara sant om fordonet?
 
-**Mer hjälp:** `self.is_running` beskriver tillståndet. För ett stoppat object ska methoden nå `return False` **före** `self.speed += amount`. Prova både före och efter `start()` på samma object.
+**Mer hjälp:** `self.is_running` beskriver tillståndet. För ett stoppat objekt ska methoden nå `return False` **före** `self.speed += amount`. Kontrollera stoppat och startat läge med separata, nya objekt.
 
 ### 4B – `accelerate(amount)` kräver positivt värde
 
@@ -48,9 +48,9 @@
 
 ## Steg 7 – kontrollera programmet
 
-**Första ledtråd:** Använder två av dina kontroller samma Car-object och påverkar därför varandras startvärden?
+**Första ledtråd:** Har varje separat kontroll ett nytt `Car`-objekt med egna startvärden?
 
-**Mer hjälp:** Skapa ett nytt object för ett scenario som kräver speed `0` och fuel `20`. Skriv ut return-värde och state före/efter. Om ett `False` ändå följs av ändrat state, gå till den methoden och kontrollera om en tilldelning sker **före** valideringen.
+**Mer hjälp:** Skapa ett nytt objekt för varje kontroll som kräver särskilda startvärden, till exempel speed `0` och fuel `20`. Skriv ut return-värde och state före/efter. Om ett `False` ändå följs av ändrat state, gå till den methoden och kontrollera om en tilldelning sker **före** valideringen.
 
 ## Om Python visar en traceback
 
