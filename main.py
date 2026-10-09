@@ -2,7 +2,7 @@
 
 from vehicle import Car
 
-
+print("\n\n!=============================!\n")
 print("=== Test 1: Stoppa en redan stoppad bil ===")
 stop_car = Car("Volvo", "V60")
 print("Motor igång före:", stop_car.is_running)
